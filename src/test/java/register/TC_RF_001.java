@@ -1,6 +1,7 @@
 package register;
 
 import java.time.Duration;
+import java.util.Date;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,7 +21,7 @@ public class TC_RF_001 {
 		driver.findElement(By.linkText("Register")).click();
 		driver.findElement(By.id("input-firstname")).sendKeys("Chaitanya");
 		driver.findElement(By.id("input-lastname")).sendKeys("Latake");
-		driver.findElement(By.id("input-email")).sendKeys("abc916@gmail.com");
+		driver.findElement(By.id("input-email")).sendKeys(generateDummyMail());
 		driver.findElement(By.id("input-telephone")).sendKeys("7020299142");
 		driver.findElement(By.id("input-password")).sendKeys("Abc@134");
 		driver.findElement(By.id("input-confirm")).sendKeys("Abc@134");
@@ -28,7 +29,29 @@ public class TC_RF_001 {
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
 		
 		Assert.assertTrue(driver.findElement(By.linkText("Logout")).isDisplayed());
-		System.out.println("You are successfully logged in to Tutorials Ninja Website");
+		Assert.assertTrue(driver.findElement(By.xpath("//ul[@class='breadcrumb']//a[text()='Success']")).isDisplayed());
+		
+		String properDetails1="Your Account Has Been Created!";
+		String properDetails2="Congratulations! Your new account has been successfully created!";
+		String properDetails3="You can now take advantage of member privileges to enhance your online shopping experience with us.";
+		String properDetails4="If you have ANY questions about the operation of this online shop, please e-mail the store owner.";
+		String properDetails5="A confirmation has been sent to the provided e-mail address. If you have not received it within the hour, please contact us.";
+		
+		Assert.assertTrue(driver.findElement(By.id("content")).getText().contains(properDetails1));
+		Assert.assertTrue(driver.findElement(By.id("content")).getText().contains(properDetails2));
+		Assert.assertTrue(driver.findElement(By.id("content")).getText().contains(properDetails3));
+		Assert.assertTrue(driver.findElement(By.id("content")).getText().contains(properDetails4));
+		Assert.assertTrue(driver.findElement(By.id("content")).getText().contains(properDetails5));
+		
+		driver.findElement(By.linkText("Continue")).click();
+		
+		Assert.assertTrue(driver.findElement(By.linkText("Edit your account information")).isDisplayed());
+		
+		driver.quit();
 	}
-
+	public static String generateDummyMail() {
+		Date date=new Date();
+		String newMail=date.toString().replaceAll("\\s","").replaceAll("\\:","")+"@gmail.com";
+		return newMail;
+	}
 }
