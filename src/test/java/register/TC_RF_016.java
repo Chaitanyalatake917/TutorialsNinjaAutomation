@@ -8,7 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class TC_RF_16 {
+public class TC_RF_016 {
 
 	WebDriver driver;
 	SoftAssert soft;
