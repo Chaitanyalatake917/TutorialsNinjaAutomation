@@ -1,7 +1,6 @@
 package tests;
 
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -11,7 +10,6 @@ import pages.HeaderOptions;
 import utilities.CommonUtilities;
 
 public class LoginTest extends Base{
-	WebDriver driver;
 	
 	@BeforeMethod
 	public void setUp() {
@@ -319,7 +317,7 @@ public class LoginTest extends Base{
 	public void verifyUIofLoginPage() {
 		if (browserName.equalsIgnoreCase("firefox")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "\\Screenshots\\ActualUIofLoginPagefirefoxSS.png");
+					System.getProperty("user.dir") + "//Screenshots//ActualUIofLoginPagefirefoxSS.png");
 			
 				Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
 						System.getProperty("user.dir") + "//ScreenShots//ActualUIofLoginPagefirefoxSS.png",
@@ -327,14 +325,14 @@ public class LoginTest extends Base{
 			
 		} else if (browserName.equalsIgnoreCase("chrome")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "\\Screenshots\\ActualUIofLoginPageSSchrome.png");
+					System.getProperty("user.dir") + "//Screenshots//ActualUIofLoginPageSSchrome.png");
 			
 				Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
 						System.getProperty("user.dir") + "//ScreenShots//ActualUIofLoginPageSSchrome.png",
 						System.getProperty("user.dir") + "//ScreenShots//ExpectedUIofLoginPageSSchrome.png"));
 			
 		} else if (browserName.equalsIgnoreCase("edge")) {
-			CommonUtilities.takeScreenshot(driver, System.getProperty("user.dir") + "\\Screenshots\\ActualUIofLoginPageSSedge.png");
+			CommonUtilities.takeScreenshot(driver, System.getProperty("user.dir") + "//Screenshots//ActualUIofLoginPageSSedge.png");
 			
 				Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
 						System.getProperty("user.dir") + "//ScreenShots//ActualUIofLoginPageSSedge.png",
@@ -342,7 +340,7 @@ public class LoginTest extends Base{
 			
 		} else if (browserName.equalsIgnoreCase("safari")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "\\Screenshots\\ExpectedUIofLoginPageSSsafari.png");
+					System.getProperty("user.dir") + "//Screenshots//ExpectedUIofLoginPageSSsafari.png");
 			
 				Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
 						System.getProperty("user.dir") + "//ScreenShots//ActualUIofLoginPageSSsafari.png",
