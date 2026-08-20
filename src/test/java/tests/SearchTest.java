@@ -1,6 +1,5 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -9,7 +8,6 @@ import base.Base;
 import pages.HeaderOptions;
 
 public class SearchTest extends Base{
-	WebDriver driver;
 	
 	@BeforeMethod
 	public void setup() {
@@ -60,7 +58,6 @@ public class SearchTest extends Base{
 	}
 	
 	@Test
-	
 	public void verifyPlaceholderOfSearchBar() {
 		Assert.assertEquals(headerOptions.getPlaceholderTextOfSearchBar(), "Search");
 		searchPage=headerOptions.selectSearchBtn();
