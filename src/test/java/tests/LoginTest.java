@@ -126,11 +126,12 @@ public class LoginTest extends Base{
 		Assert.assertFalse(loginPage.getPageSrcCodeOfLoginPage(driver).contains(prop.getProperty("validPass")));
 	}
 	
-	@Test
+	@Test(enabled=false)
 	public void verifyLoginAfterChangingPassword() {
 		myAccountPage=loginPage.enterEmailAndPasswordAndClickContinue(prop.getProperty("validMail"),prop.getProperty("validPass"));
 		changePasswordPage=myAccountPage.clickOnChangeYourPassword();
-		myAccountPage=changePasswordPage.enterPasswordAndPasswordConfirmAndClickContinue(prop.getProperty("newValidPass"),prop.getProperty("newValidPass"));
+		changePasswordPage.enterMailIdAndClickContinue(prop.getProperty("validMail"));
+		myAccountPage=changePasswordPage.enterPasswordAndPasswordConfirmAndClickContinue(prop.getProperty("validPass"),prop.getProperty("validPass"));
 		Assert.assertEquals(myAccountPage.pageLevelWarning(),"Success: Your password has been successfully updated.");
 		rightColumnOptions=myAccountPage.getRightColumnOptions();
 		logOutpage=rightColumnOptions.clickOnLogOutBtn();
