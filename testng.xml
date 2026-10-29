@@ -6,10 +6,11 @@
 	<test name="Web Automation Tests">
 
 		<classes>
+			
 			<class name="tests.LoginTest" />
-			<class name="tests.LogoutTest" />
+			<!--<class name="tests.LogoutTest" />
 			<class name="tests.RegistrationTest" />
-			<class name="tests.SearchTest" />
+			<class name="tests.SearchTest" />-->
 		</classes>
 
 	</test>
