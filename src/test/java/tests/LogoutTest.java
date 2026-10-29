@@ -113,35 +113,35 @@ public class LogoutTest extends Base {
 
 		if (browserName.equalsIgnoreCase("firefox")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "\\Screenshots\\ActualUIofLogOutPageOptionfirefoxSS.png");
+					System.getProperty("user.dir") + "/Screenshots/ActualUIofLogOutPageOptionfirefoxSS.png");
 
 			Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
-					System.getProperty("user.dir") + "//ScreenShots//ActualUIofLogOutPageOptionfirefoxSS.png",
-					System.getProperty("user.dir") + "//ScreenShots//ExpectedUIofLogOutPageOptionfirefoxSS.png"));
+					System.getProperty("user.dir") + "/ScreenShots/ActualUIofLogOutPageOptionfirefoxSS.png",
+					System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLogOutPageOptionfirefoxSS.png"));
 
 		} else if (browserName.equalsIgnoreCase("chrome")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "\\Screenshots\\ActualUIofLogOutPageOptionchromeSS.png");
+					System.getProperty("user.dir") + "/Screenshots/ActualUIofLogOutPageOptionchromeSS.png");
 
 			Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
-					System.getProperty("user.dir") + "//ScreenShots//ActualUIofLogOutPageOptionchromeSS.png",
-					System.getProperty("user.dir") + "//ScreenShots//ExpectedUIofLogOutPageOptionchromeSS.png"));
+					System.getProperty("user.dir") + "/ScreenShots/ActualUIofLogOutPageOptionchromeSS.png",
+					System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLogOutPageOptionchromeSS.png"));
 
 		} else if (browserName.equalsIgnoreCase("edge")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "\\Screenshots\\ActualUIofLogOutPageOptionedgeSS.png");
+					System.getProperty("user.dir") + "/ScreenShots/ActualUIofLogOutPageOptionedgeSS.png");
 
 			Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
-					System.getProperty("user.dir") + "//ScreenShots//ActualUIofLogOutPageOptionedgeSS.png",
-					System.getProperty("user.dir") + "//ScreenShots//ExpectedUIofLogOutPageOptionedgeSS.png"));
+					System.getProperty("user.dir") + "/ScreenShots/ActualUIofLogOutPageOptionedgeSS.png",
+					System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLogOutPageOptionedgeSS.png"));
 
 		} else if (browserName.equalsIgnoreCase("safari")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "\\Screenshots\\ActualUIofLogOutPageOptionsafariSS.png");
+					System.getProperty("user.dir") + "/Screenshots/ActualUIofLogOutPageOptionsafariSS.png");
 
 			Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
-					System.getProperty("user.dir") + "//ScreenShots//ActualUIofLogOutPageOptionsafariSS.png",
-					System.getProperty("user.dir") + "//ScreenShots//ExpectedUIofLogOutPageOptionsafariSS.png"));
+					System.getProperty("user.dir") + "/ScreenShots/ActualUIofLogOutPageOptionsafariSS.png",
+					System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLogOutPageOptionsafariSS.png"));
 
 		}
 
@@ -149,36 +149,35 @@ public class LogoutTest extends Base {
 
 		if (browserName.equalsIgnoreCase("firefox")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "\\Screenshots\\ActualUIofLogOutPagefirefoxSS.png");
+					System.getProperty("user.dir") + "/Screenshots/ActualUIofLogOutPagefirefoxSS.png");
 
-			Assert.assertFalse(CommonUtilities.compareTwoScreenshots(
-					System.getProperty("user.dir") + "//ScreenShots//ActualUIofLogOutPagefirefoxSS.png",
-					System.getProperty("user.dir") + "//ScreenShots//ExpectedUIofLogOutPagefirefoxSS.png"));
+			Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
+					System.getProperty("user.dir") + "/ScreenShots/ActualUIofLogOutPagefirefoxSS.png",
+					System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLogOutPagefirefoxSS.png"));
 
 		} else if (browserName.equalsIgnoreCase("chrome")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "\\Screenshots\\ActualUIofLogOutPagechromeSS.png");
+					System.getProperty("user.dir") + "/Screenshots/ActualUIofLogOutPagechromeSS.png");
 
-			Assert.assertFalse(CommonUtilities.compareTwoScreenshots(
-					System.getProperty("user.dir") + "//ScreenShots//ActualUIofLogOutPagechromeSS.png",
-					System.getProperty("user.dir") + "//ScreenShots//ExpectedUIofLogOutPagechromeSS.png"));
+			Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
+					System.getProperty("user.dir") + "/ScreenShots/ActualUIofLogOutPagechromeSS.png",
+					System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLogOutPagechromeSS.png"));
 
 		} else if (browserName.equalsIgnoreCase("edge")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "\\Screenshots\\ActualUIofLogOutPageedgeSS.png");
+					System.getProperty("user.dir") + "/ScreenShots/ActualUIofLogOutPageedgeSS.png");
 
-			Assert.assertFalse(CommonUtilities.compareTwoScreenshots(
-					System.getProperty("user.dir") + "//ScreenShots//ActualUIofLogOutPageedgeSS.png",
-					System.getProperty("user.dir") + "//ScreenShots//ExpectedUIofLogOutPageedgeSS.png"));
+			Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
+					System.getProperty("user.dir") + "/ScreenShots/ActualUIofLogOutPageedgeSS.png",
+					System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLogOutPageedgeSS.png"));
 
 		} else if (browserName.equalsIgnoreCase("safari")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "\\Screenshots\\ExpectedUIofLogOutPagesafariSS.png");
+					System.getProperty("user.dir") + "/Screenshots/ExpectedUIofLogOutPagesafariSS.png");
 
-			Assert.assertFalse(CommonUtilities.compareTwoScreenshots(
-					System.getProperty("user.dir") + "//ScreenShots//ActualUIofLogOutPagesafariSS.png",
-					System.getProperty("user.dir") + "//ScreenShots//ExpectedUIofLogOutPagesafariSS.png"));
-
+			Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
+					System.getProperty("user.dir") + "/ScreenShots/ActualUIofLogOutPagesafariSS.png",
+					System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLogOutPagesafariSS.png"));
 		}
 	}
 }
