@@ -12,6 +12,9 @@ public class ChangePasswordPage extends RootPage{
 		super(driver);
 	}
 	
+	@FindBy(id="input-email")
+	private WebElement email;
+	
 	@FindBy(id="input-password")
 	private WebElement password;
 	
@@ -20,6 +23,11 @@ public class ChangePasswordPage extends RootPage{
 	
 	@FindBy(xpath="//div[@class='pull-right']/input[@value='Continue']")
 	private WebElement continueBtn;
+	
+	public void enterMailIdAndClickContinue(String mail) {
+		elementUtilities.enterTextIntoElement(email, mail);
+		elementUtilities.clickOnElement(continueBtn);
+	}
 	
 	public MyAccountPage enterPasswordAndPasswordConfirmAndClickContinue(String pass,String con){
 		elementUtilities.enterTextIntoElement(password, pass);
