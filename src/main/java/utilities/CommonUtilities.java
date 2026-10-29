@@ -61,6 +61,5 @@ public class CommonUtilities {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 }
