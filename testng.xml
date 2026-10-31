@@ -5,6 +5,12 @@
 
 	<test name="Web Automation Tests">
 
+		<groups>
+			<run>
+				<exclude name="visual"></exclude>
+				<exclude name="knownBug"></exclude>
+			</run>
+		</groups>
 		<classes>
 			<class name="tests.LoginTest" />
 			<!--<class name="tests.LogoutTest" />
