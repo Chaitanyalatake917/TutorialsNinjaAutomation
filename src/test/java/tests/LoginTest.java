@@ -182,8 +182,8 @@ public class LoginTest extends Base{
 
 		searchPage = headerOptions.selectSearchBtn();
 		Assert.assertEquals(getCurrentPageTitle(searchPage.getDriver()), "Search");
-		navigateBackInBrowser(homePage.getDriver());
-
+		navigateBackInBrowser(searchPage.getDriver());
+		
 		homePage = headerOptions.selectHomeBreadcrumb();
 		Assert.assertEquals(getCurrentPageTitle(homePage.getDriver()), "Your Store");
 		navigateBackInBrowser(homePage.getDriver());
@@ -318,34 +318,34 @@ public class LoginTest extends Base{
 	public void verifyUIofLoginPage() {
 		if (browserName.equalsIgnoreCase("firefox")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "//Screenshots//ActualUIofLoginPagefirefoxSS.png");
+					System.getProperty("user.dir") + "/ScreenShots/ActualUIofLoginPagefirefoxSS.png");
 			
 				Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
-						System.getProperty("user.dir") + "//ScreenShots//ActualUIofLoginPagefirefoxSS.png",
-						System.getProperty("user.dir") + "//ScreenShots//ExpectedUIofLoginPagefirefoxSS.png"));
+						System.getProperty("user.dir") + "/ScreenShots/ActualUIofLoginPagefirefoxSS.png",
+						System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLoginPagefirefoxSS.png"));
 			
 		} else if (browserName.equalsIgnoreCase("chrome")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "//Screenshots//ActualUIofLoginPageSSchrome.png");
+					System.getProperty("user.dir") + "/ScreenShots/ActualUIofLoginPageSSchrome.png");
 			
 				Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
-						System.getProperty("user.dir") + "//ScreenShots//ActualUIofLoginPageSSchrome.png",
-						System.getProperty("user.dir") + "//ScreenShots//ExpectedUIofLoginPageSSchrome.png"));
+						System.getProperty("user.dir") + "/ScreenShots/ActualUIofLoginPageSSchrome.png",
+						System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLoginPageSSchrome.png"));
 			
 		} else if (browserName.equalsIgnoreCase("edge")) {
-			CommonUtilities.takeScreenshot(driver, System.getProperty("user.dir") + "//Screenshots//ActualUIofLoginPageSSedge.png");
+			CommonUtilities.takeScreenshot(driver, System.getProperty("user.dir") + "/ScreenShots/ActualUIofLoginPageSSedge.png");
 			
 				Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
-						System.getProperty("user.dir") + "//ScreenShots//ActualUIofLoginPageSSedge.png",
-						System.getProperty("user.dir") + "//ScreenShots//ExpectedUIofLoginPageSSedge.png"));
+						System.getProperty("user.dir") + "/ScreenShots/ActualUIofLoginPageSSedge.png",
+						System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLoginPageSSedge.png"));
 			
 		} else if (browserName.equalsIgnoreCase("safari")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "//Screenshots//ExpectedUIofLoginPageSSsafari.png");
+					System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLoginPageSSsafari.png");
 			
 				Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
-						System.getProperty("user.dir") + "//ScreenShots//ActualUIofLoginPageSSsafari.png",
-						System.getProperty("user.dir") + "//ScreenShots//ExpectedUIofLoginPageSSsafari.png"));
+						System.getProperty("user.dir") + "/ScreenShots/ActualUIofLoginPageSSsafari.png",
+						System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLoginPageSSsafari.png"));
 		}
 	}
 	
@@ -357,7 +357,8 @@ public class LoginTest extends Base{
 		loginPage.enterEmailAndPasswordAndClickContinue(invalidEmail,prop.getProperty("incorrectPassword"));
 		loginPage.enterEmailAndPasswordAndClickContinue(invalidEmail,prop.getProperty("incorrectPassword"));
 		loginPage.enterEmailAndPasswordAndClickContinue(invalidEmail,prop.getProperty("incorrectPassword"));
-		loginPage.clickLoginBtn();
+		loginPage.enterEmailAndPasswordAndClickContinue(invalidEmail,prop.getProperty("incorrectPassword"));
+
 		Assert.assertEquals(loginPage.pageLevelWarning(), "Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.");
 	}
 }
