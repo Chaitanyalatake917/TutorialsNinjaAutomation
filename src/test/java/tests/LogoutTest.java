@@ -102,7 +102,7 @@ public class LogoutTest extends Base {
 		Assert.assertEquals(logOutpage.getLogOutPageHeading(), "Account Logout");
 	}
 
-	@Test
+	@Test(groups="visual")
 	public void verifyUIofLogOutPageLoginOptions() {
 		headerOptions.clickOnMyAccount();
 		loginPage = headerOptions.clickOnLogin();
