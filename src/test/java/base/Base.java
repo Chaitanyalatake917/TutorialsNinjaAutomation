@@ -3,11 +3,15 @@ package base;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterMethod;
@@ -82,40 +86,67 @@ public class Base {
 	}
 
 	public WebDriver openBrowserAndAppURL() {
-
 		prop = CommonUtilities.loadPropertiesFile();
 		browserName = prop.getProperty("browserName");
 
+		// Read execution mode from Maven system property
+		boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
+
 		if (browserName.equalsIgnoreCase("chrome")) {
-			driver = new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+			if (headless) {
+				options.addArguments("--headless=new");
+			}
+			options.addArguments("--window-size=1920,1080");
+			driver = new ChromeDriver(options);
+
 		} else if (browserName.equalsIgnoreCase("edge")) {
-			driver = new EdgeDriver();
+			EdgeOptions options = new EdgeOptions();
+			if (headless) {
+				options.addArguments("--headless=new");
+			}
+			options.addArguments("--window-size=1920,1080");
+			driver = new EdgeDriver(options);
+
 		} else if (browserName.equalsIgnoreCase("firefox")) {
-			driver = new FirefoxDriver();
+			FirefoxOptions options = new FirefoxOptions();
+			if (headless) {
+				options.addArguments("-headless");
+			}
+			driver = new FirefoxDriver(options);
+
 		} else if (browserName.equalsIgnoreCase("safari")) {
+			if (headless) {
+				throw new IllegalArgumentException("Headless mode is not configured for Safari.");
+			}
 			driver = new SafariDriver();
+		} else {
+			throw new IllegalArgumentException("Unsupported browser: " + browserName);
 		}
 
-		driver.manage().window().maximize();
+		if (!headless) {
+			driver.manage().window().setSize(
+				    new Dimension(1920, 1080));
+		}
+
 		driver.get(prop.getProperty("appURL"));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-
 		return driver;
 	}
-	
+
 	public Actions getActions(WebDriver driver) {
 		return new Actions(driver);
 	}
 
 	public Actions enterMultipleKeysUsingKeyboard(Actions action, Keys key, int noOfTimes) {
-		
+
 		for (int i = 0; i < noOfTimes; i++) {
 			action.sendKeys(key).perform();
 		}
 		return action;
 	}
 
-	public Actions enterTextUsingActions(Actions action,String text) {
+	public Actions enterTextUsingActions(Actions action, String text) {
 		action.sendKeys(text).perform();
 		return action;
 	}
@@ -131,7 +162,7 @@ public class Base {
 	public void navigateBackInBrowser(WebDriver driver) {
 		driver.navigate().back();
 	}
-	
+
 	public void refreshPage(WebDriver driver) {
 		driver.navigate().refresh();
 	}
