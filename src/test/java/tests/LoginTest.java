@@ -337,7 +337,7 @@ public class LoginTest extends Base{
 			
 				Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
 						System.getProperty("user.dir") + "/ScreenShots/ActualUIofLoginPageSSedge.png",
-						System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLoginPageSSedge.png"));
+						System.getProperty("user.dir") + "/src/test/resources/baseline-images/ExpectedUIofLoginPageSSedge.png"));
 			
 		} else if (browserName.equalsIgnoreCase("safari")) {
 			CommonUtilities.takeScreenshot(driver,
