@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,8 +16,8 @@ public class MyAccountPage extends RootPage{
 	@FindBy(linkText="Edit your account information")
 	private WebElement editAcInfoLink;
 	
-	@FindBy(xpath="//ul[@class='breadcrumb']//a[text()='Account' and @href]")
-	private WebElement myAcBreadcrumb;
+	By myAcBreadcrumb =By.xpath("//ul[@class='breadcrumb']//a[text()='Account' and @href]");
+	
 	
 	@FindBy(linkText="Subscribe / unsubscribe to newsletter")
 	private WebElement subscribeUnsubscribeBtn;
