@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Date;
 import java.util.Properties;
 
@@ -54,12 +55,15 @@ public class CommonUtilities {
 
 	public static void takeScreenshot(WebDriver driver, String screenshotPath) {
 		TakesScreenshot ts = (TakesScreenshot) driver;
-		File src = ts.getScreenshotAs(OutputType.FILE);
+	    File src = ts.getScreenshotAs(OutputType.FILE);
+	    File destination = new File(screenshotPath);
 
-		try {
-			FileHandler.copy(src, new File(screenshotPath));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	    try {
+	        Files.createDirectories(destination.toPath().getParent());
+	        FileHandler.copy(src, destination);
+
+	    } catch (IOException e) {
+	        throw new RuntimeException("Unable to save screenshot", e);
+	    }
 	}
 }
