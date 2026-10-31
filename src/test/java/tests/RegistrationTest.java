@@ -908,7 +908,7 @@ public class RegistrationTest extends Base {
 		Assert.assertTrue(registrationPage.registerBreadcrumbIsDisaplayed());
 	}
 
-	@Test
+	@Test(groups="visual")
 	public void verifyUIofRegisterAccountPage() {
 		if (browserName.equalsIgnoreCase("firefox")) {
 			CommonUtilities.takeScreenshot(driver,
