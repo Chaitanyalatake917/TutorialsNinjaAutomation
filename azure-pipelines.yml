@@ -1,0 +1,26 @@
+
+trigger:
+  - main
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+
+  # Step 1: Checkout GitHub repository
+  - checkout: self
+
+  # Step 2: Execute Selenium TestNG tests
+  - task: Maven@4
+    displayName: 'Execute Selenium Automation Tests'
+    inputs:
+      mavenPomFile: 'pom.xml'
+      goals: 'clean test -Dheadless=true'
+
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.21'
+      jdkArchitectureOption: 'x64'
+
+      publishJUnitResults: true
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      testRunTitle: 'Tutorials Ninja Automation Results'
