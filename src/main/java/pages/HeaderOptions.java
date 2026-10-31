@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,9 +12,8 @@ public class HeaderOptions extends RootPage {
 	public HeaderOptions(WebDriver driver) {
 		super(driver);
 	}
-
-	@FindBy(xpath = "//a[@title='My Account']")
-	private WebElement myAccountDropMenu;
+	
+	By myAccountDropMenu=By.xpath("//a[@title='My Account']");
 
 	@FindBy(linkText = "Register")
 	private WebElement register;
