@@ -25,7 +25,7 @@ public class RootPage {
 
 	public RootPage(WebDriver driver) {
 		this.driver = driver;
-		this.elementUtilities=new ElementUtilities(driver);
+		this.elementUtilities = new ElementUtilities(driver);
 		PageFactory.initElements(driver, this);
 	}
 
@@ -33,9 +33,9 @@ public class RootPage {
 		return driver;
 	}
 
-	private By pageHeading=By.xpath("//div[@id='content']/h1");
+	private By pageHeading = By.xpath("//div[@id='content']/h1");
 
-	@FindBy(xpath = "//ul[@class='breadcrumb']/li/a[contains(@href,'home')]")
+	@FindBy(xpath = "//ul[@class='breadcrumb']/li/a[@href='https://tutorialsninja.com/demo/index.php?route=common/home']")
 	private WebElement homeBreadcrumb;
 
 	@FindBy(xpath = "//ul[@class='breadcrumb']/li/a[contains(@href,'account')]")
@@ -43,11 +43,11 @@ public class RootPage {
 
 	@FindBy(xpath = "//ul[@class='breadcrumb']/li/a[text()='Register']")
 	private WebElement registerBreadcrumb;
-	
+
 	@FindBy(xpath = "//ul[@class='breadcrumb']/li/a[text()='Login']")
 	private WebElement loginBreadcrumb;
 
-	private By pageLevelWarningLocator=By.xpath("(//ul[@class='breadcrumb']/following-sibling::div)[1]");
+	private By pageLevelWarningLocator = By.xpath("(//ul[@class='breadcrumb']/following-sibling::div)[1]");
 
 	public String pageLevelWarning() {
 		return elementUtilities.getTextOfElement(pageLevelWarningLocator);
@@ -57,8 +57,9 @@ public class RootPage {
 		return elementUtilities.getTextOfElement(pageHeading);
 	}
 
+
 	public HomePage selectHomeBreadcrumb() {
-		elementUtilities.clickOnElement(homeBreadcrumb);
+		elementUtilities.clickOnElementUsingJS(homeBreadcrumb);
 		return new HomePage(driver);
 	}
 
@@ -71,48 +72,50 @@ public class RootPage {
 		elementUtilities.clickOnElement(registerBreadcrumb);
 		return new RegistrationPage(driver);
 	}
-	
+
 	public LoginPage selectLoginBreadcrumb() {
 		elementUtilities.clickOnElement(loginBreadcrumb);
 		return new LoginPage(driver);
 	}
-	
+
 	public boolean loginBreadcrumbIsDisplayed() {
 		return elementUtilities.isElementIsDisplayed(loginBreadcrumb);
 	}
-	
-	public HeaderOptions getHeaderOptions(){
+
+	public HeaderOptions getHeaderOptions() {
 		return new HeaderOptions(driver);
 	}
 
 	public RightColumnOptions getRightColumnOptions() {
 		return new RightColumnOptions(driver);
 	}
-	
+
 	public AccountSuccessPage getAccountSuccessPage() {
 		return new AccountSuccessPage(driver);
 	}
-	
+
 	public MyAccountPage getMyAccountPage() {
 		return new MyAccountPage(driver);
 	}
+
 	public RegistrationPage getRegistrationPage() {
 		return new RegistrationPage(driver);
 	}
-	
+
 	public FooterOptions getFooterOptions() {
 		return new FooterOptions(driver);
 	}
-	
+
 	public AboutUsPage getAboutUsPage() {
 		return new AboutUsPage(driver);
 	}
-	
-	public DeliveryInformationPage getDeliveryInformationPage(){
+
+	public DeliveryInformationPage getDeliveryInformationPage() {
 		return new DeliveryInformationPage(driver);
 	}
-	
+
 	public PrivacyPolicyPage getPrivacyPolicyPage() {
 		return new PrivacyPolicyPage(driver);
 	}
+
 }
