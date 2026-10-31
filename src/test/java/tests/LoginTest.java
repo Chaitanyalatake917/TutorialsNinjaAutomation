@@ -318,33 +318,33 @@ public class LoginTest extends Base{
 	public void verifyUIofLoginPage() {
 		if (browserName.equalsIgnoreCase("firefox")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "/ScreenShots/ActualUIofLoginPagefirefoxSS.png");
+					System.getProperty("user.dir") + "/target/ScreenShots/ActualUIofLoginPagefirefoxSS.png");
 			
 				Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
-						System.getProperty("user.dir") + "/ScreenShots/ActualUIofLoginPagefirefoxSS.png",
+						System.getProperty("user.dir") + "/target/ScreenShots/ActualUIofLoginPagefirefoxSS.png",
 						System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLoginPagefirefoxSS.png"));
 			
 		} else if (browserName.equalsIgnoreCase("chrome")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "/ScreenShots/ActualUIofLoginPageSSchrome.png");
+					System.getProperty("user.dir") + "/target/ScreenShots/ActualUIofLoginPageSSchrome.png");
 			
 				Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
-						System.getProperty("user.dir") + "/ScreenShots/ActualUIofLoginPageSSchrome.png",
+						System.getProperty("user.dir") + "/target/ScreenShots/ActualUIofLoginPageSSchrome.png",
 						System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLoginPageSSchrome.png"));
 			
 		} else if (browserName.equalsIgnoreCase("edge")) {
-			CommonUtilities.takeScreenshot(driver, System.getProperty("user.dir") + "/ScreenShots/ActualUIofLoginPageSSedge.png");
+			CommonUtilities.takeScreenshot(driver, System.getProperty("user.dir") + "/target/ScreenShots/ActualUIofLoginPageSSedge.png");
 			
 				Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
-						System.getProperty("user.dir") + "/ScreenShots/ActualUIofLoginPageSSedge.png",
+						System.getProperty("user.dir") + "/target/ScreenShots/ActualUIofLoginPageSSedge.png",
 						System.getProperty("user.dir") + "/src/test/resources/baseline-images/ExpectedUIofLoginPageSSedge.png"));
 			
 		} else if (browserName.equalsIgnoreCase("safari")) {
 			CommonUtilities.takeScreenshot(driver,
-					System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLoginPageSSsafari.png");
+					System.getProperty("user.dir") + "/target/ScreenShots/ExpectedUIofLoginPageSSsafari.png");
 			
 				Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
-						System.getProperty("user.dir") + "/ScreenShots/ActualUIofLoginPageSSsafari.png",
+						System.getProperty("user.dir") + "/target/ScreenShots/ActualUIofLoginPageSSsafari.png",
 						System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLoginPageSSsafari.png"));
 		}
 	}
