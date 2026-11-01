@@ -26,6 +26,10 @@ public class ElementUtilities {
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
+	
+	public WebElement getElement(By ele) {
+		return driver.findElement(ele);
+	}
 
 	public String getTextOfElement(By locator) {
 
@@ -105,6 +109,13 @@ public class ElementUtilities {
 			element.sendKeys(text);
 		}
 	}
+	
+	public void enterTextIntoElement(By element, String text) {
+		if (isElementIsDisplayed(element) && getElement(element).isEnabled()) {
+			clearTextFromElement(getElement(element));
+			getElement(element).sendKeys(text);
+		}
+	}
 
 	public String getCssPropertyOfElement(WebElement element, String property) {
 		String value = "";
@@ -115,9 +126,17 @@ public class ElementUtilities {
 	public String getDomPropertyOfElement(WebElement element, String attribute) {
 		return element.getDomProperty(attribute);
 	}
+	
+	public String getDomPropertyOfElement(By element, String attribute) {
+		return getElement(element).getDomProperty(attribute);
+	}
 
 	public String getDomAttributeOfElement(WebElement element, String attribute) {
 		return element.getDomAttribute(attribute);
+	}
+	
+	public String getDomAttributeOfElement(By element, String attribute) {
+		return getElement(element).getDomAttribute(attribute);
 	}
 
 	public void copyTextOfFieldUsingKeyboard(WebElement element, WebDriver driver) {
@@ -128,6 +147,12 @@ public class ElementUtilities {
 	public void pasteTextIntoFieldUsingKeyboard(WebElement element, WebDriver driver) {
 		Actions action = new Actions(driver);
 		action.click(element).keyDown(Keys.CONTROL).sendKeys("a").sendKeys(Keys.BACK_SPACE).sendKeys("v")
+				.keyUp(Keys.CONTROL).build().perform();
+	}
+	
+	public void pasteTextIntoFieldUsingKeyboard(By element, WebDriver driver) {
+		Actions action = new Actions(driver);
+		action.click(getElement(element)).keyDown(Keys.CONTROL).sendKeys("a").sendKeys(Keys.BACK_SPACE).sendKeys("v")
 				.keyUp(Keys.CONTROL).build().perform();
 	}
 
