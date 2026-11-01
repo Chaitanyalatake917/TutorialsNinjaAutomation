@@ -233,7 +233,7 @@ public class RegistrationTest extends Base {
 		Assert.assertEquals(registrationPage.emailValidationWarn(), emailValidation4);
 	}
 
-	@Test
+	@Test(groups="knownBug")
 	public void verifyInvalidPhoneWarning() {
 		registrationPage.fillRegistrationForm(prop.getProperty("firstname"), prop.getProperty("lastname"),
 				CommonUtilities.generateDummyMail(), prop.getProperty("invalidTelephone"), prop.getProperty("password"),
@@ -286,7 +286,7 @@ public class RegistrationTest extends Base {
 		Assert.assertEquals(registrationPage.getAttributeOfPasswordConfirmField(), "Password Confirm");
 	}
 
-	@Test
+	@Test(groups="knownBug")
 	public void verifyMandatoryFields() {
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 
@@ -377,7 +377,7 @@ public class RegistrationTest extends Base {
 		Assert.assertTrue(registrationPage.telePhoneWarning().equals(telephoneWarning));
 	}
 
-	@Test(dataProvider = "invalidPasswordProvider", enabled = true)
+	@Test(dataProvider = "invalidPasswordProvider", groups="knownBug")
 	public void verifyPasswordValidationsWithInvalidPassword(String password) {
 		registrationPage.fillRegistrationForm(prop.getProperty("firstname"), prop.getProperty("lastname"),
 				CommonUtilities.generateDummyMail(), prop.getProperty("telephone"), password, password);
@@ -425,7 +425,7 @@ public class RegistrationTest extends Base {
 		return arr;
 	}
 
-	@Test(dataProvider = "validFirstNameField", enabled = true)
+	@Test(dataProvider = "validFirstNameField", groups="knownBug")
 	public void verifyFirstnameFieldWithValidFirstName(String first) {
 		String expectedHeight = "34px";
 		String expectedWidth = "701.25px";
@@ -450,7 +450,7 @@ public class RegistrationTest extends Base {
 		return new Object[][] { { "Chaitanya" }, { "c" }, { "chaitanya" }, { "parag" }, { "Omkar" } };
 	}
 
-	@Test(dataProvider = "invalidFirstNameField", enabled = true)
+	@Test(dataProvider = "invalidFirstNameField", groups= "knownBug")
 	public void verifyFirstnameFieldWithInvalidFirstName(String first) {
 		String expectedHeight = "34px";
 		String expectedWidth = "701.25px";
@@ -497,7 +497,7 @@ public class RegistrationTest extends Base {
 		return new Object[][] { { "Latake" }, { "l" }, { "patil" }, { "Ingale" } };
 	}
 
-	@Test(dataProvider = "invalidLastNameField", enabled = true)
+	@Test(dataProvider = "invalidLastNameField", groups="knownBug")
 	public void verifyLastNameFieldWithInvalidLastName(String last) {
 		String expectedHeight = "34px";
 		String expectedWidth = "701.25px";
@@ -549,7 +549,7 @@ public class RegistrationTest extends Base {
 				{ "alpha.beta@research-lab.io" } };
 	}
 
-	@Test(dataProvider = "invalidEmailField", enabled = true)
+	@Test(dataProvider = "invalidEmailField", groups="knownBug")
 	public void verifyEmailFieldWithInvalid(String Email) {
 
 		String expectedHeight = "34px";
@@ -576,7 +576,7 @@ public class RegistrationTest extends Base {
 				{ "chai!tanya@gmail.com" }, { "chaitanya@gmail" } };
 	}
 
-	@Test(dataProvider = "invalidTelephoneField", enabled = true)
+	@Test(dataProvider = "invalidTelephoneField", groups="knownBug")
 	public void telephoneValidation(String phone) {
 		String expectedHeight = "34px";
 		String expectedWidth = "701.25px";
@@ -648,7 +648,7 @@ public class RegistrationTest extends Base {
 		Assert.assertEquals(registrationPage.getContinueCssValueFontSize(), "12px");
 	}
 
-	@Test
+	@Test(groups="knownBug")
 	public void verifyInputTrimming() {
 		String expectedEmail = "   " + CommonUtilities.generateDummyMail() + "   ";
 		registrationPage.fillRegistrationForm("   " + prop.getProperty("firstname") + "   ",
@@ -908,7 +908,7 @@ public class RegistrationTest extends Base {
 		Assert.assertTrue(registrationPage.registerBreadcrumbIsDisaplayed());
 	}
 
-	@Test(groups="visual")
+	@Test(groups="visual", enabled=false)
 	public void verifyUIofRegisterAccountPage() {
 		if (browserName.equalsIgnoreCase("firefox")) {
 			CommonUtilities.takeScreenshot(driver,
