@@ -24,3 +24,12 @@ steps:
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
       testRunTitle: 'Tutorials Ninja Automation Results'
+
+  # Step 3: Publish Allure Report
+  - task: PublishAllureReport@2
+    displayName: 'Publish Allure Report'
+    condition: always()
+    inputs:
+      testResultsDir: 'target/allure-results'
+      reportName: 'Tutorials Ninja Automation Report'
+      allureVersion: '2.36.0'
