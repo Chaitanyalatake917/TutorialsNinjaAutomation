@@ -1,10 +1,13 @@
 package base;
 
+import java.io.ByteArrayInputStream;
 import java.time.Duration;
 import java.util.Properties;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -14,9 +17,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.asserts.SoftAssert;
 
+import io.qameta.allure.Allure;
 import pages.AboutUsPage;
 import pages.AccountSuccessPage;
 import pages.AffiliatePage;
@@ -79,6 +84,25 @@ public class Base {
 	public Actions action;
 
 	@AfterMethod
+	public void attachScreenshotOnFailure(ITestResult result) {
+
+		if (result.getStatus() == ITestResult.FAILURE && driver != null) {
+			try {
+				byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+
+				Allure.addAttachment(result.getMethod().getMethodName(), "image/png",
+						new ByteArrayInputStream(screenshot), ".png");
+
+				System.out.println("Failure screenshot attached to Allure.");
+
+			} catch (Exception e) {
+				System.err.println("Failed to attach failure screenshot.");
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@AfterMethod(dependsOnMethods = "attachScreenshotOnFailure")
 	public void tearDown() {
 		if (driver != null) {
 			driver.quit();
@@ -125,8 +149,7 @@ public class Base {
 		}
 
 		if (!headless) {
-			driver.manage().window().setSize(
-				    new Dimension(1920, 1080));
+			driver.manage().window().setSize(new Dimension(1920, 1080));
 		}
 
 		driver.get(prop.getProperty("appURL"));
