@@ -2,8 +2,18 @@
 trigger:
   - main
 
+schedules:
+	#cron defines time at which pipeline should be automatically triggered regardless of code change
+  - cron: '0 0 * * *'
+    displayName: 'Daily Regression run 5:30 IST'
+    branches: 
+	  include:
+	    -main
+    always: true
+  
 variables:
-- group: 'TN-Automation-Config'
+  #Assigning variable group to pipeline
+  - group: 'TN-Automation-Config'
 
 pool:
   vmImage: 'windows-latest'
