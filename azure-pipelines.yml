@@ -2,6 +2,9 @@
 trigger:
   - main
 
+variables:
+- group: 'TN-Automation-Config'
+
 pool:
   vmImage: 'windows-latest'
 
