@@ -15,8 +15,7 @@ steps:
     displayName: 'Execute Selenium Automation Tests'
     inputs:
       mavenPomFile: 'pom.xml'
-      goals: 'clean test -Dheadless=true'
-
+      goals: '$(mavenGoals) -DbrowserName=$(browserName) -Dheadless=$(headless)'
       javaHomeOption: 'JDKVersion'
       jdkVersionOption: '1.21'
       jdkArchitectureOption: 'x64'
