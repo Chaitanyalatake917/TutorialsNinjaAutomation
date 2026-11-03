@@ -3,12 +3,12 @@ trigger:
   - main
 
 schedules:
-	#cron defines time at which pipeline should be automatically triggered regardless of code change
+  # cron defines time at which pipeline should be automatically triggered regardless of code change
   - cron: '0 0 * * *'
     displayName: 'Daily Regression run 5:30 IST'
     branches: 
-	  include:
-	    -main
+      include:
+	    - main
     always: true
   
 variables:
