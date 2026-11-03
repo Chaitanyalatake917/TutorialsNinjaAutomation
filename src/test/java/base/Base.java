@@ -111,8 +111,13 @@ public class Base {
 
 	public WebDriver openBrowserAndAppURL() {
 		prop = CommonUtilities.loadPropertiesFile();
-		browserName = prop.getProperty("browserName");
+		
+		browserName = System.getenv("browserName");
 
+		if (browserName == null || browserName.isBlank()) {
+		    browserName = prop.getProperty("browserName");
+		}
+		
 		// Read execution mode from Maven system property
 		boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
 
