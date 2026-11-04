@@ -92,9 +92,6 @@ public class Base {
 
 				Allure.addAttachment(result.getMethod().getMethodName(), "image/png",
 						new ByteArrayInputStream(screenshot), ".png");
-
-				System.out.println("Failure screenshot attached to Allure.");
-
 			} catch (Exception e) {
 				System.err.println("Failed to attach failure screenshot.");
 				e.printStackTrace();
@@ -111,13 +108,13 @@ public class Base {
 
 	public WebDriver openBrowserAndAppURL() {
 		prop = CommonUtilities.loadPropertiesFile();
-		
+
 		browserName = System.getenv("browserName");
 
 		if (browserName == null || browserName.isBlank()) {
-		    browserName = prop.getProperty("browserName");
+			browserName = prop.getProperty("browserName");
 		}
-		
+
 		// Read execution mode from Maven system property
 		boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
 
