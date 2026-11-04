@@ -26,7 +26,7 @@ public class ElementUtilities {
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
-	
+
 	public WebElement getElement(By ele) {
 		return driver.findElement(ele);
 	}
@@ -40,10 +40,10 @@ public class ElementUtilities {
 			return "";
 		}
 	}
-	
+
 	public void clickOnElement(By element) {
 		try {
-			wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(element))).click();
+			wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 
 		} catch (TimeoutException | ElementClickInterceptedException e) {
 			throw new RuntimeException("Unable to click element: " + element, e);
@@ -63,7 +63,7 @@ public class ElementUtilities {
 		try {
 			wait.until(ExpectedConditions.visibilityOf(element));
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-			
+
 		} catch (TimeoutException | StaleElementReferenceException | JavascriptException e) {
 			throw new RuntimeException("Unable to click element using JavaScript: " + element, e);
 		}
@@ -109,7 +109,7 @@ public class ElementUtilities {
 			element.sendKeys(text);
 		}
 	}
-	
+
 	public void enterTextIntoElement(By element, String text) {
 		if (isElementIsDisplayed(element) && getElement(element).isEnabled()) {
 			clearTextFromElement(getElement(element));
@@ -126,7 +126,7 @@ public class ElementUtilities {
 	public String getDomPropertyOfElement(WebElement element, String attribute) {
 		return element.getDomProperty(attribute);
 	}
-	
+
 	public String getDomPropertyOfElement(By element, String attribute) {
 		return getElement(element).getDomProperty(attribute);
 	}
@@ -134,7 +134,7 @@ public class ElementUtilities {
 	public String getDomAttributeOfElement(WebElement element, String attribute) {
 		return element.getDomAttribute(attribute);
 	}
-	
+
 	public String getDomAttributeOfElement(By element, String attribute) {
 		return getElement(element).getDomAttribute(attribute);
 	}
@@ -143,13 +143,19 @@ public class ElementUtilities {
 		Actions action = new Actions(driver);
 		action.click(element).keyDown(Keys.CONTROL).sendKeys("a").sendKeys("c").keyUp(Keys.CONTROL).build().perform();
 	}
+	
+	public void copyTextOfFieldUsingKeyboard(By element, WebDriver driver) {
+		Actions action = new Actions(driver);
+		WebElement ele=wait.until(ExpectedConditions.elementToBeClickable(element));
+		action.click(ele).keyDown(Keys.CONTROL).sendKeys("a").sendKeys("c").keyUp(Keys.CONTROL).build().perform();
+	}
 
 	public void pasteTextIntoFieldUsingKeyboard(WebElement element, WebDriver driver) {
 		Actions action = new Actions(driver);
 		action.click(element).keyDown(Keys.CONTROL).sendKeys("a").sendKeys(Keys.BACK_SPACE).sendKeys("v")
 				.keyUp(Keys.CONTROL).build().perform();
 	}
-	
+
 	public void pasteTextIntoFieldUsingKeyboard(By element, WebDriver driver) {
 		Actions action = new Actions(driver);
 		action.click(getElement(element)).keyDown(Keys.CONTROL).sendKeys("a").sendKeys(Keys.BACK_SPACE).sendKeys("v")
