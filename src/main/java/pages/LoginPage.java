@@ -17,9 +17,8 @@ public class LoginPage extends RootPage {
 	private WebElement continueBtn;
 	
 	private By eMail=By.id("input-email");
-
-	@FindBy(id = "input-password")
-	private WebElement passWord;
+	
+	private By passWord=By.id("input-password");
 
 	@FindBy(xpath = "//input[@value='Login']")
 	private WebElement loginBtn;
@@ -70,7 +69,7 @@ public class LoginPage extends RootPage {
 	}
 
 	public String getPasswordPlaceholderValue() {
-		return passWord.getDomAttribute("placeholder");
+		return elementUtilities.getDomAttributeOfElement(passWord, "placeholder");
 	}
 
 	public String getDomPropertyOfEmail() {
