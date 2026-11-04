@@ -8,7 +8,7 @@ schedules:
     displayName: 'Daily Regression run 5:30 IST'
     branches: 
       include:
-	    - main
+      - main
     always: true
   
 variables:
