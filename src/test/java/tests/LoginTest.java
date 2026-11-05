@@ -29,6 +29,7 @@ public class LoginTest extends Base {
 
 	@Test
 	public void verifyLoginWithInvalidCredentials() {
+		Assert.assertTrue(false,"Intentionally failing to check pipeline execution flow");
 		loginPage.enterEmailAndPasswordAndClickContinue(prop.getProperty("invalidMail0"),
 				prop.getProperty("validPass"));
 		Assert.assertEquals(loginPage.pageLevelWarning(), "Warning: No match for E-Mail Address and/or Password.");
@@ -126,7 +127,7 @@ public class LoginTest extends Base {
 		Assert.assertNotEquals(loginPage.getDomPropertyOfEmail(), prop.getProperty("validPass"));
 	}
 
-	@Test(groups="knownBug")
+	@Test(groups = "knownBug")
 	public void verifyPasswordIsNotVisibleInPageSrc() {
 		loginPage.enterPasswordField(prop.getProperty("validPass"));
 		loginPage.clickLoginBtn();
@@ -325,7 +326,7 @@ public class LoginTest extends Base {
 		Assert.assertEquals(loginPage.getSecondHeading(), "Returning Customer");
 	}
 
-	@Test(groups="visual")
+	@Test(groups = "visual")
 	public void verifyUIofLoginPage() {
 		if (browserName.equalsIgnoreCase("firefox")) {
 			CommonUtilities.takeScreenshot(driver,
@@ -350,7 +351,7 @@ public class LoginTest extends Base {
 			Assert.assertTrue(CommonUtilities.compareTwoScreenshots(
 					System.getProperty("user.dir") + "/ScreenShots/ActualUIofLoginPageSSedge.png",
 					System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLoginPageSSedge.png"));
-			
+
 		} else if (browserName.equalsIgnoreCase("safari")) {
 			CommonUtilities.takeScreenshot(driver,
 					System.getProperty("user.dir") + "/ScreenShots/ExpectedUIofLoginPageSSsafari.png");
