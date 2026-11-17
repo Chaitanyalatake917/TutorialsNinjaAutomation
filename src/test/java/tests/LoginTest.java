@@ -122,8 +122,8 @@ public class LoginTest extends Base {
 		loginPage.enterEmailField(prop.getProperty("existingMail"));
 		loginPage.enterPasswordField(prop.getProperty("validPass"));
 		loginPage.copyTextOfpasswordField();
-		loginPage.clickLoginBtn();
 		loginPage.pasteTextIntoEmailField();
+		loginPage.clickLoginBtn();
 		Assert.assertNotEquals(loginPage.getDomPropertyOfEmail(), prop.getProperty("validPass"));
 	}
 
