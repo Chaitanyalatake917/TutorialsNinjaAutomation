@@ -29,7 +29,6 @@ public class LoginTest extends Base {
 
 	@Test
 	public void verifyLoginWithInvalidCredentials() {
-		Assert.assertTrue(false,"Intentionally failing to check pipeline execution flow");
 		loginPage.enterEmailAndPasswordAndClickContinue(prop.getProperty("invalidMail0"),
 				prop.getProperty("validPass"));
 		Assert.assertEquals(loginPage.pageLevelWarning(), "Warning: No match for E-Mail Address and/or Password.");
