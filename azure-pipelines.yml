@@ -37,7 +37,16 @@ steps:
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
       testRunTitle: 'Tutorials Ninja Automation Results'
 
-  # Step 3: Publish Allure Report
+  # Step 3: Added a failure-diagnostics step
+  - powershell: |
+      Write-Host "Maven execution failed."
+      Write-Host "Inspect the preceding Maven task logs."
+      Write-Host "Build reason: $(Build.Reason)"
+      Write-Host "Source branch: $(Build.SourceBranch)"
+    displayName: 'Failure Diagnostics'
+    condition: failed()
+          
+  # Step 4: Publish Allure Report
   - task: PublishAllureReport@2
     displayName: 'Publish Allure Report'
     condition: always()
